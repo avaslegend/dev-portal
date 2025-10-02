@@ -1,0 +1,28 @@
+core_version_requirement: ^8 || ^9 || ^10 || ^11
+type: theme
+base theme: connect_theme
+
+name: 'efectivaportal'
+project: 'efectivaportal'
+description: 'Sub-theme of connect_theme.'
+version: 1.0.1
+package: 'Bootstrap'
+
+regions:
+  navigation: 'Navigation'
+  navigation_right: 'Navigation Right'
+  topbar: 'Top Bar'
+  highlighted: 'Highlighted'
+  help: 'Help'
+  content: 'Content'
+  sidebar_first: 'Primary'
+  sidebar_second: 'Secondary'
+  footer: 'Footer'
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+  collapse_left: 'Collapse Left'
+  collapse_right: 'Collapse Right'
+  disabled: 'Disabled'
+
+libraries:
+  - 'efectivaportal/global-styling'

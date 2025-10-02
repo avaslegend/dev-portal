@@ -1,0 +1,386 @@
+/**
+ * EFECTIVA PORTAL - PRODUCTOS DINÁMICOS (VERSIÓN HÍBRIDA)
+ * CSS limpio con !important SOLO para estilos inline críticos
+ * Actualizado: 2025
+ * 
+ * BEST PRACTICE: Usa !important únicamente para sobrescribir estilos inline
+ * que Drupal genera dinámicamente vía JavaScript
+ */
+
+/* ========================================
+   SECCIÓN PRINCIPAL DE PRODUCTOS
+   ======================================== */
+
+.block-featured-content.block-featuredcontent {
+  padding: var(--space-7xl) 0;
+  background: var(--color-gray-100);
+}
+
+/* ========================================
+   HEADER DE LA SECCIÓN
+   ======================================== */
+
+.block-featured-content .featuredcontentBlockWrapper {
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+.block-featured-content .featuredcontentBlockHeader {
+  text-align: center;
+  margin-bottom: var(--space-5xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.block-featured-content .featuredcontentBlockHeader h3 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-dark);
+  margin-top: 0;
+  margin-bottom: 0;
+  position: relative;
+}
+
+.block-featured-content .featuredcontentBlockHeader h3::before {
+  content: 'Nuestros Productos';
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-md);
+}
+
+.block-featured-content .featuredcontentBlockHeader > a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  background: var(--gradient-primary);
+  color: var(--color-white);
+  text-decoration: none;
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-primary);
+  transition: var(--transition-base);
+  font-size: var(--font-size-base);
+}
+
+.block-featured-content .featuredcontentBlockHeader > a:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+  text-decoration: none;
+}
+
+.block-featured-content .featuredcontentBlockHeader > a::after {
+  content: '→';
+  font-size: 1.25rem;
+  transition: var(--transition-fast);
+}
+
+.block-featured-content .featuredcontentBlockHeader > a:hover::after {
+  transform: translateX(4px);
+}
+
+/* ========================================
+   CONTENEDOR DE PRODUCTOS
+   IMPORTANTE: Aquí necesitamos !important por los estilos inline
+   ======================================== */
+
+.block-featured-content .featuredcontentContentContainer {
+  margin-bottom: var(--space-4xl);
+}
+
+/*
+ * NOTA: Drupal/JavaScript agrega estilos inline como:
+ * style="position: relative; height: 206px;"
+ * Por eso necesitamos !important aquí (es la ÚNICA forma de sobrescribirlos)
+ */
+.block-featured-content .featuredcontentNodeContainer.featuredcontentNodeType-product {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+  gap: var(--space-3xl) !important;
+  position: static !important;
+  height: auto !important;
+}
+
+/* ========================================
+   CARD DE PRODUCTO
+   IMPORTANTE: También necesita !important por estilos inline
+   ======================================== */
+
+/*
+ * NOTA: Drupal/JavaScript agrega estilos inline como:
+ * style="position: absolute; left: 0%; top: 0px;"
+ * Por eso necesitamos !important aquí
+ */
+.block-featured-content .featuredcontentNode {
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  width: 100% !important;
+  
+  /* Estilos visuales (SIN !important porque no hay conflicto) */
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  cursor: pointer;
+}
+
+.block-featured-content .featuredcontentNode:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.block-featured-content .featuredcontentNodeInner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* ========================================
+   HEADER DEL PRODUCTO
+   Sin !important porque no hay conflicto inline
+   ======================================== */
+
+.block-featured-content .featuredcontentNode .featuredcontentNodeHeader {
+  padding: var(--space-xl);
+  background: var(--gradient-primary);
+  color: var(--color-white);
+  position: relative;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.block-featured-content .featuredcontentNodeImage {
+  display: none;
+}
+
+.block-featured-content .featuredcontentNodeTitle {
+  position: relative;
+  z-index: 1;
+}
+
+.block-featured-content .featuredcontentNodeTitle a {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+  text-decoration: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+  line-height: var(--line-height-tight);
+}
+
+.block-featured-content .featuredcontentNodeTitle a:hover {
+  text-decoration: none;
+  opacity: 0.95;
+}
+
+/* ========================================
+   VERSIÓN
+   ======================================== */
+
+.block-featured-content .featuredcontentNodeVersion {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-sm);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(var(--blur-sm));
+  -webkit-backdrop-filter: blur(var(--blur-sm));
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-white);
+}
+
+/* ========================================
+   BODY DEL PRODUCTO
+   ======================================== */
+
+.block-featured-content .featuredcontentNode .featuredcontentNodeInfo {
+  padding: var(--space-xl);
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.block-featured-content .featuredcontentNodeSummary {
+  font-size: var(--font-size-base);
+  color: var(--color-gray-700);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-lg);
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ========================================
+   BOTÓN "VER DOCUMENTACIÓN"
+   ======================================== */
+
+.block-featured-content .featuredcontentNodeInfo::after {
+  content: 'Ver Documentación';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-base);
+  cursor: pointer;
+  margin-top: auto;
+  text-align: center;
+}
+
+.block-featured-content .featuredcontentNode:hover .featuredcontentNodeInfo::after {
+  background: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ========================================
+   COLORES POR PRODUCTO
+   ======================================== */
+
+.block-featured-content .featuredcontentNode.featuredcontentNodeID-_2 .featuredcontentNodeHeader {
+  background: var(--gradient-primary);
+}
+
+.block-featured-content .featuredcontentNode.featuredcontentNodeID-_7 .featuredcontentNodeHeader {
+  background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
+}
+
+.block-featured-content .featuredcontentNode:nth-child(3) .featuredcontentNodeHeader {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.block-featured-content .featuredcontentNode:nth-child(4) .featuredcontentNodeHeader {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+/* ========================================
+   ANIMACIONES
+   ======================================== */
+
+.block-featured-content .featuredcontentNode {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp var(--duration-medium) var(--ease-out) forwards;
+}
+
+.block-featured-content .featuredcontentNode:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.block-featured-content .featuredcontentNode:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.block-featured-content .featuredcontentNode:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.block-featured-content .featuredcontentNode:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 1023px) {
+  .block-featured-content .featuredcontentNodeContainer.featuredcontentNodeType-product {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: var(--space-2xl) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .block-featured-content {
+    padding: var(--space-5xl) 0;
+  }
+  
+  .block-featured-content .featuredcontentBlockHeader {
+    margin-bottom: var(--space-3xl);
+  }
+  
+  .block-featured-content .featuredcontentBlockHeader h3 {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .block-featured-content .featuredcontentNodeContainer.featuredcontentNodeType-product {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-xl) !important;
+  }
+  
+  .block-featured-content .featuredcontentNode .featuredcontentNodeHeader {
+    min-height: 100px;
+    padding: var(--space-lg);
+  }
+  
+  .block-featured-content .featuredcontentNodeTitle a {
+    font-size: var(--font-size-xl);
+  }
+  
+  .block-featured-content .featuredcontentNodeInfo {
+    padding: var(--space-lg);
+  }
+  
+  .block-featured-content .featuredcontentNodeSummary {
+    -webkit-line-clamp: 3;
+  }
+}
+
+/* ========================================
+   ACCESIBILIDAD
+   ======================================== */
+
+.block-featured-content .featuredcontentNodeTitle a:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+
+.block-featured-content .featuredcontentBlockHeader > a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+/* ========================================
+   DOCUMENTACIÓN DE !IMPORTANT
+   
+   Los !important en este archivo están JUSTIFICADOS porque:
+   1. Sobrescriben estilos inline que Drupal/JS genera dinámicamente
+   2. No hay otra forma de sobrescribir estilos inline (especificidad 1000)
+   3. Están limitados a propiedades de layout críticas (position, display, grid)
+   4. No afectan estilos visuales (colores, tamaños, etc.)
+   
+   Ubicación de !important (SOLO 7 propiedades):
+   - .featuredcontentNodeContainer: display, grid-template-columns, gap, position, height
+   - .featuredcontentNode: position, left, top, width
+   
+   El resto del CSS (95%) es limpio sin !important
+   ======================================== */

@@ -1,0 +1,94 @@
+{
+  "name": "efectivaportal-dev",
+  "version": "1.0.0",
+  "description": "Sistema de desarrollo modular para Efectiva Developer Portal (IBM API Connect + Drupal)",
+  "main": "concatenate.js",
+  "scripts": {
+    "build": "node concatenate.js",
+    "build:css": "node concatenate.js --css-only",
+    "build:js": "node concatenate.js --js-only",
+    "build:min": "node concatenate.js --minify",
+    "build:prod": "npm run build:min",
+    "watch": "nodemon --watch css-source --watch js-source --exec 'npm run build'",
+    "package": "npm run build && cd EFECTIVAPORTAL && zip -r ../efectivaportal.zip . && cd ..",
+    "package:prod": "npm run build:min && cd EFECTIVAPORTAL && zip -r ../efectivaportal-prod.zip . && cd ..",
+    "deploy": "npm run package && echo '✅ Paquete generado: efectivaportal.zip'",
+    "deploy:prod": "npm run package:prod && echo '✅ Paquete PRODUCCIÓN generado: efectivaportal-prod.zip'",
+    "clean": "rm -f EFECTIVAPORTAL/css/overrides.css EFECTIVAPORTAL/js/main.js efectivaportal.zip efectivaportal-prod.zip",
+    "validate:css": "echo '🔍 Validando CSS...' && npx stylelint 'css-source/**/*.css' || true",
+    "validate:js": "echo '🔍 Validando JS...' && npx eslint 'js-source/**/*.js' || true",
+    "lint": "npm run validate:css && npm run validate:js",
+    "stats": "echo '📊 Estadísticas del proyecto:' && echo '' && du -sh css-source js-source EFECTIVAPORTAL && echo '' && find css-source -name '*.css' | wc -l && echo 'archivos CSS' && find js-source -name '*.js' | wc -l && echo 'archivos JS'",
+    "compare": "npm run build && npm run build:min && echo '\n📊 Comparación de tamaños:' && ls -lh EFECTIVAPORTAL/css/overrides.css EFECTIVAPORTAL/js/main.js 2>/dev/null || echo 'Sin archivos generados'",
+    "help": "echo '\n📚 Comandos disponibles:\n' && echo '  npm run build          - Genera CSS y JS (desarrollo)' && echo '  npm run build:min      - Genera CSS y JS minificados (producción)' && echo '  npm run build:prod     - Alias de build:min' && echo '  npm run watch          - Observa cambios y regenera' && echo '  npm run package        - Genera ZIP desarrollo' && echo '  npm run package:prod   - Genera ZIP producción (minificado)' && echo '  npm run deploy         - Build + Package desarrollo' && echo '  npm run deploy:prod    - Build + Package producción' && echo '  npm run clean          - Limpia archivos generados' && echo '  npm run lint           - Valida código' && echo '  npm run compare        - Compara tamaños dev vs prod' && echo '  npm run stats          - Estadísticas del proyecto' && echo ''"
+  },
+  "keywords": [
+    "drupal",
+    "ibm-api-connect",
+    "developer-portal",
+    "css",
+    "javascript",
+    "build-system"
+  ],
+  "author": "Efectiva - Tu Financiera",
+  "license": "UNLICENSED",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tu-organizacion/efectivaportal.git"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2",
+    "stylelint": "^16.0.0",
+    "stylelint-config-standard": "^36.0.0",
+    "eslint": "^8.56.0",
+    "eslint-config-standard": "^17.1.0"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "css-source/**/*.css",
+      "js-source/**/*.js"
+    ],
+    "ext": "css,js",
+    "ignore": [
+      "EFECTIVAPORTAL/**",
+      "node_modules/**",
+      "*.zip"
+    ],
+    "delay": "500"
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard",
+    "rules": {
+      "selector-class-pattern": null,
+      "custom-property-pattern": null,
+      "no-descending-specificity": null,
+      "declaration-block-no-redundant-longhand-properties": null
+    }
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2021": true,
+      "jquery": true
+    },
+    "extends": "standard",
+    "globals": {
+      "Drupal": "readonly",
+      "drupalSettings": "readonly",
+      "once": "readonly"
+    },
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "rules": {
+      "semi": ["error", "always"],
+      "space-before-function-paren": ["error", "never"]
+    }
+  }
+}

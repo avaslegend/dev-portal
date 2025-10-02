@@ -1,0 +1,179 @@
+/**
+ * EFECTIVA PORTAL - FOOTER MODERNO PARA DRUPAL
+ * CSS adaptado para la sección "Get Help" convertida en footer moderno
+ */
+
+/* ========================================
+   FOOTER MODERNO BASE
+   ======================================== */
+
+.home-footer-modern {
+  padding: var(--space-5xl) var(--container-padding) var(--space-2xl);
+  background: var(--color-dark);
+  color: var(--color-white);
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+}
+
+/* ========================================
+   FOOTER MAIN GRID
+   ======================================== */
+
+.home-footer__main {
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  gap: var(--space-4xl);
+  margin-bottom: var(--space-4xl);
+  padding-bottom: var(--space-4xl);
+  border-bottom: 1px solid var(--color-gray-800);
+}
+
+/* ========================================
+   FOOTER BRAND
+   ======================================== */
+
+.home-footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.home-footer__logo {
+  height: 48px;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+
+.home-footer__tagline {
+  font-size: var(--font-size-base);
+  color: var(--color-gray-400);
+  line-height: var(--line-height-relaxed);
+  max-width: 320px;
+}
+
+/* ========================================
+   SOCIAL LINKS
+   ======================================== */
+
+.home-footer__social {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.home-footer__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--color-gray-800);
+  border-radius: var(--radius-lg);
+  color: var(--color-gray-400);
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+
+.home-footer__social-link:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+  transform: translateY(-4px);
+}
+
+.home-footer__social-link svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ========================================
+   FOOTER SECTIONS
+   ======================================== */
+
+.home-footer__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.home-footer__section-title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-white);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-sm);
+}
+
+.home-footer__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.home-footer__link {
+  color: var(--color-gray-400);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  transition: var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+}
+
+.home-footer__link:hover {
+  color: var(--color-primary);
+  transform: translateX(4px);
+}
+
+/* ========================================
+   FOOTER BOTTOM
+   ======================================== */
+
+.home-footer__bottom {
+  text-align: center;
+  padding-top: var(--space-2xl);
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-500);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 1023px) {
+  .home-footer__main {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3xl);
+  }
+  
+  .home-footer__brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 767px) {
+  .home-footer-modern {
+    padding: var(--space-4xl) var(--container-padding) var(--space-xl);
+  }
+  
+  .home-footer__main {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+    margin-bottom: var(--space-2xl);
+    padding-bottom: var(--space-2xl);
+  }
+  
+  .home-footer__brand {
+    grid-column: auto;
+  }
+  
+  .home-footer__tagline {
+    max-width: 100%;
+  }
+  
+  .home-footer__social {
+    justify-content: center;
+  }
+}

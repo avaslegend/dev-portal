@@ -1,0 +1,54 @@
+# ============================================================================
+# EFECTIVA PORTAL - GIT IGNORE
+# ============================================================================
+
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Archivos generados (NO versionar)
+EFECTIVAPORTAL/css/overrides.css
+EFECTIVAPORTAL/js/main.js
+*.zip
+
+# Archivos temporales
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+logs/
+*.log
+
+# Sistema operativo
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Cache
+.cache/
+.eslintcache
+.stylelintcache
